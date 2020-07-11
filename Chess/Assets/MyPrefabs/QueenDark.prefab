@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1923621325337341097}
   - component: {fileID: 6018858600959510306}
   - component: {fileID: 1539112326185753831}
+  - component: {fileID: -2464526309658097497}
   m_Layer: 0
   m_Name: QueenDark
   m_TagString: Untagged
@@ -79,3 +80,16 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &-2464526309658097497
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6745179171833375025}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b62265c572278a47a6bd4327aafe222, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isWhite: 0
