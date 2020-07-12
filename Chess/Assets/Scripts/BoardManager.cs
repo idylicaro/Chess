@@ -21,6 +21,8 @@ public class BoardManager : MonoBehaviour
     private Material previousMat;
     public  Material selectedMat;
 
+    public int[] EnPassantMove { set; get; }
+
     private Quaternion orientation = Quaternion.Euler(0, 180, 0);
 
     public bool isWhiteTurn = true;
@@ -99,6 +101,48 @@ public class BoardManager : MonoBehaviour
                 Destroy(c.gameObject);
             }
 
+            if(x == EnPassantMove[0] && y == EnPassantMove[1])
+            {
+                if(isWhiteTurn) // white turn
+                    c = Chessmans[x, y - 1];
+                else //black turn
+                    c = Chessmans[x, y + 1];
+
+                activeChessman.Remove(c.gameObject);
+                Destroy(c.gameObject);
+            }
+            EnPassantMove[0] = -1;
+            EnPassantMove[1] = -1;
+            if (selectedChessman.GetType() == typeof(Pawn)) // Pawn especial moves
+            {   
+                // promote pawn to a queen 
+                if( y == 7)
+                {
+                    activeChessman.Remove(selectedChessman.gameObject);
+                    Destroy(selectedChessman.gameObject);
+                    SpawnChessman(1, x, y);
+                    selectedChessman = Chessmans[x, y];
+                }
+                else if (y == 0)
+                {
+                    activeChessman.Remove(selectedChessman.gameObject);
+                    Destroy(selectedChessman.gameObject);
+                    SpawnChessman(7, x, y);
+                    selectedChessman = Chessmans[x, y];
+                }
+
+                if (selectedChessman.CurrentY == 1 && y == 3)
+                {
+                    EnPassantMove[0] = x;
+                    EnPassantMove[1] = y - 1;
+                }
+                else if (selectedChessman.CurrentY == 6 && y == 4)
+                {
+                    EnPassantMove[0] = x;
+                    EnPassantMove[1] = y + 1;
+                }
+            }
+
             Chessmans[selectedChessman.CurrentX, selectedChessman.CurrentY] = null;
             selectedChessman.transform.position = GetTileCenter(x, y);
             selectedChessman.SetPosition(x, y);
@@ -151,6 +195,7 @@ public class BoardManager : MonoBehaviour
         Quaternion orientationWhite = Quaternion.Euler(0, 0, 0);
         activeChessman = new List<GameObject>();
         Chessmans = new Chessman[8, 8];
+        EnPassantMove = new int[2] {-1, -1};
 
         //Spawn white team 
 
