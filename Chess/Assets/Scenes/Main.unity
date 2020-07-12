@@ -382,8 +382,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.2588191, y: 0, z: 0, w: 0.9659258}
-  m_LocalPosition: {x: 4, y: 4, z: -4}
+  m_LocalRotation: {x: -0.20585926, y: 0.68537426, z: -0.21202335, w: -0.6655301}
+  m_LocalPosition: {x: 12.625797, y: 6.031616, z: 4.157157}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -399,6 +399,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1860072255}
   - component: {fileID: 1860072256}
+  - component: {fileID: 1860072257}
   m_Layer: 0
   m_Name: Chessboard
   m_TagString: Untagged
@@ -446,3 +447,18 @@ MonoBehaviour:
   - {fileID: 1549600017571415817, guid: 1ca9dd47cccefb24f8eb104efe28e195, type: 3}
   - {fileID: 8236723933345774113, guid: 4d45dcd08ea925b40b147bc45f1048d3, type: 3}
   - {fileID: 8236723933345774113, guid: 4d45dcd08ea925b40b147bc45f1048d3, type: 3}
+  isWhiteTurn: 1
+--- !u!114 &1860072257
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1860072254}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b725df213ae510e44b10e4472fdeca49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  highlightPrefab: {fileID: 8953915893186180558, guid: 9f0c0697b4d4a7b48926fa5dff89af85,
+    type: 3}

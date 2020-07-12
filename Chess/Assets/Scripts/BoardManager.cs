@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class BoardManager : MonoBehaviour
 {
+    public static BoardManager Instance { set; get; }
+    private bool[,] allowedMoves { set; get; }
     public Chessman[,] Chessmans { set; get; }
     private Chessman selectedChessman;
 
@@ -21,11 +23,13 @@ public class BoardManager : MonoBehaviour
     public bool isWhiteTurn = true;
     private void Start()
     {
+        Instance = this;
         SpawnAllChessmans();
     }
 
     private void Update()
     {
+        
         UpdateSelection();
         DrawChessboard();
         if ( Input.GetMouseButtonDown(0)) //Input.GetMouseButton(0)
@@ -54,19 +58,39 @@ public class BoardManager : MonoBehaviour
         if (Chessmans[x, y].isWhite != isWhiteTurn)
             return;
 
+        allowedMoves = Chessmans[x, y].PossibleMove();
         selectedChessman = Chessmans[x, y];
+        BoardHighligths.Instace.HighlightAllowedMoves(allowedMoves);
     }
 
     private void MoveChessman(int x, int y)
     {
-        if(selectedChessman.PossibleMove(x, y))
+        if(allowedMoves[x,y])
         {
+            Chessman c = Chessmans[x, y];
+            if(c != null && c.isWhite != isWhiteTurn)
+            {
+                // Capture a piece
+
+                // if it is the king 
+                if(c.GetType() == typeof(King))
+                {
+                    // End the game
+                    return;
+                }
+
+                activeChessman.Remove(c.gameObject);
+                Destroy(c.gameObject);
+            }
+
             Chessmans[selectedChessman.CurrentX, selectedChessman.CurrentY] = null;
             selectedChessman.transform.position = GetTileCenter(x, y);
+            selectedChessman.SetPosition(x, y);
             Chessmans[x, y] = selectedChessman;
             isWhiteTurn = !isWhiteTurn;
         }
 
+        BoardHighligths.Instace.HideHighlights();
         selectedChessman = null;
     }
 
@@ -137,10 +161,10 @@ public class BoardManager : MonoBehaviour
         //Spawn black team 
 
         // King 
-        SpawnChessman(6, 3, 7);
+        SpawnChessman(6, 4, 7);
 
         // Queen 
-        SpawnChessman(7, 4, 7);
+        SpawnChessman(7, 3, 7);
 
         // Rooks 
         SpawnChessman(8, 0, 7);
