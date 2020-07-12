@@ -382,8 +382,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: -0.20585926, y: 0.68537426, z: -0.21202335, w: -0.6655301}
-  m_LocalPosition: {x: 12.625797, y: 6.031616, z: 4.157157}
+  m_LocalRotation: {x: -0.4050056, y: 0.007390291, z: -0.00329645, w: -0.91427845}
+  m_LocalPosition: {x: 4.2338142, y: 7.802805, z: -1.3744812}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -444,8 +444,8 @@ MonoBehaviour:
   - {fileID: 702465718800405000, guid: 4d74c4528513c144fabafb69fb314523, type: 3}
   - {fileID: 6745179171833375025, guid: 6e53f4b78f7aebe46817b20576ebf475, type: 3}
   - {fileID: 655450075044041608, guid: 9434ae49c6383b344a091f95c53a1229, type: 3}
+  - {fileID: 6917928804941477100, guid: 7ac3a55cf18b9bf48b6533f548e9be99, type: 3}
   - {fileID: 1549600017571415817, guid: 1ca9dd47cccefb24f8eb104efe28e195, type: 3}
-  - {fileID: 8236723933345774113, guid: 4d45dcd08ea925b40b147bc45f1048d3, type: 3}
   - {fileID: 8236723933345774113, guid: 4d45dcd08ea925b40b147bc45f1048d3, type: 3}
   isWhiteTurn: 1
 --- !u!114 &1860072257
