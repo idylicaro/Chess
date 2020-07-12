@@ -18,6 +18,9 @@ public class BoardManager : MonoBehaviour
     public List<GameObject> chessmanPrefabs;
     private List<GameObject> activeChessman;
 
+    private Material previousMat;
+    public  Material selectedMat;
+
     private Quaternion orientation = Quaternion.Euler(0, 180, 0);
 
     public bool isWhiteTurn = true;
@@ -69,6 +72,9 @@ public class BoardManager : MonoBehaviour
             return;
 
         selectedChessman = Chessmans[x, y];
+        previousMat = selectedChessman.GetComponent<MeshRenderer>().material;
+        selectedMat.mainTexture = previousMat.mainTexture;
+        selectedChessman.GetComponent<MeshRenderer>().material = selectedMat;
         BoardHighligths.Instace.HighlightAllowedMoves(allowedMoves);
     }
 
@@ -100,6 +106,7 @@ public class BoardManager : MonoBehaviour
             isWhiteTurn = !isWhiteTurn;
         }
 
+        selectedChessman.GetComponent<MeshRenderer>().material = previousMat;
         BoardHighligths.Instace.HideHighlights();
         selectedChessman = null;
     }
